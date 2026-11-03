@@ -1,0 +1,122 @@
+/**
+ * FinVest Custom & Micro-Interaction Stylesheet
+ * Contains animations, glassmorphism enhancements, and accessibility rules.
+ */
+
+/* ==========================================================================
+   ANIMATIONS & KEYFRAMES
+   ========================================================================== */
+@keyframes finvestFadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes finvestPulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(201, 168, 76, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(201, 168, 76, 0.55);
+  }
+}
+
+@keyframes finvestShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-fade-in-up {
+  animation: finvestFadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.pulse-glow {
+  animation: finvestPulseGlow 3s infinite ease-in-out;
+}
+
+/* ==========================================================================
+   INTERACTIVE CARDS & GLASSMORPHISM
+   ========================================================================== */
+.glass-panel {
+  background: rgba(34, 34, 56, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(201, 168, 76, 0.2);
+}
+
+.gold-hover-glow {
+  position: relative;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gold-hover-glow:hover {
+  border-color: var(--color-primary);
+  box-shadow: 0 8px 30px rgba(201, 168, 76, 0.25);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: #121221;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2b2b46;
+  border-radius: 4px;
+  border: 2px solid #121221;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+/* ==========================================================================
+   FORM CONTROLS & FOCUS ACCESSIBILITY
+   ========================================================================== */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+.form-select option {
+  background-color: #1a1a2e;
+  color: #ffffff;
+  padding: 8px;
+}
+
+/* ==========================================================================
+   REDUCED MOTION PREFERENCE
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ==========================================================================
+   PRINT STYLES
+   ========================================================================== */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  .site-header, .site-footer, .finvest-modal, .back-to-top {
+    display: none !important;
+  }
+}
